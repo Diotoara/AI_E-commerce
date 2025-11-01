@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
-import { catchAsyncError } from "./catchAsyncError"
-import ErrorHandler from "./errorMiddleware"
-import database from "../database/db"
+import { catchAsyncError } from "./catchAsyncError.js"
+import ErrorHandler from "./errorMiddleware.js"
+import database from "../database/db.js"
 
 export const isAuthenticated = catchAsyncError(async(req,res,next)=>{
     const {token} = req.cookies;
@@ -25,6 +25,6 @@ export const authorizedRoles = (...roles) => {
                 )
             )
         }
-        next()
+        next();
     }
 }
