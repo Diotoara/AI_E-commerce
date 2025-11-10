@@ -1,5 +1,5 @@
 import express from 'express';
-import { createProduct, deleteProduct, deleteReview, fetchAllProducts, fetchSingleProduct, postProductReview, updateProduct } from '../controller/productController.js';
+import { createProduct, deleteProduct, deleteReview, fecthAiFilteredProducts, fetchAllProducts, fetchSingleProduct, postProductReview, updateProduct } from '../controller/productController.js';
 import { authorizedRoles, isAuthenticated } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
@@ -11,5 +11,6 @@ router.delete('/admin/delete/:productId', isAuthenticated, authorizedRoles("Admi
 router.get('/singleProduct/:productId', fetchSingleProduct);
 router.put('/post-new/review/:productId', isAuthenticated , postProductReview);
 router.delete('/delete/review/:productId', isAuthenticated , deleteReview);
+router.post("/ai-search",isAuthenticated, fecthAiFilteredProducts);
 
 export default router; 
